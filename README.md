@@ -1,8 +1,8 @@
 # Blondezone - Plataforma de Hospedagem de Jogos 🎮🌐
 
-[![GitHub release](https://img.shields.io/github/v/release/seu-usuario/blondezone?style=for-the-badge)](https://github.com/seu-usuario/blondezone/releases)
-[![Site Status](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?style=for-the-badge)](https://seu-usuario.github.io/blondezone/)
-[![GitHub license](https://img.shields.io/github/license/seu-usuario/blondezone?style=for-the-badge)](https://github.com/seu-usuario/blondezone/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/seu-usuario/blondezone?style=for-the-badge)](https://blondezone.github.io/blondezonegames/)
+[![Site Status](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?style=for-the-badge)](https://blondezone.github.io/blondezonegames/)
+[![GitHub license](https://img.shields.io/github/license/seu-usuario/blondezone?style=for-the-badge)](https://blondezone.github.io/blondezonegames/)
 
 ## Visão Geral
 
