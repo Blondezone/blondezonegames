@@ -74,7 +74,7 @@ cd blondezone
 
 ## Estatísticas do Repositório
 
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=seu-usuario&repo=blondezone&show_icons=true&theme=radical)](https://github.com/seu-usuario/blondezone)
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=blondezone&repo=blondezone&show_icons=true&theme=radical)](https://blondezone.github.io/blondezonegames/)
 
 ---
 
