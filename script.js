@@ -11,6 +11,7 @@ const toggle = () => {
 
     if(document.querySelector('.icon-mode').classList.contains('hidden')){
         document.querySelector('.moon').classList.remove('hidden')
+        // document.querySelector('login-box').classList.add('bg-white');
     } else (
         document.querySelector('.moon').classList.add('hidden')
     )
