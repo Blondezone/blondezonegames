@@ -6,7 +6,7 @@
             private string $adm = "",
             private string $email = "",
             private string $senha = "",
-        )
+        ){}
 
         public function getId_adm()
 		{
@@ -28,3 +28,4 @@
 			return $this->senha;
 		}
     }
+?>
