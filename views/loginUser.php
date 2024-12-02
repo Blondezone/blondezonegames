@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Blondezone</title>
+    <title>Blondezone - Login User</title>
     <style>
         body {
             transition: background-color 0.5s, color 0.5s;
@@ -52,6 +52,53 @@
     </style>
     <link rel="shortcut icon" href="imagens/game-controller.svg" type="image/x-icon">
 </head>
+
+<?php
+session_start();
+$msg = ["", ""];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once "../models/Conexao.php";
+    require_once "../models/usuario.class.php";
+    require_once "../models/usuarioDAO.php";
+
+    //valida se os campos de entrada do formulário foram preenchidos
+    function validarFormulario() {
+        $erro = false;
+
+        if (empty($_POST["email"])) {
+            $msg[0] = "Preencha o email";
+            $erro = true;
+        }
+
+        if (empty($_POST["senha"])) {
+            $msg[1] = "Preencha a senha";
+            $erro = true;
+        }
+
+        return !$erro;
+    }
+
+    // Executa a validação e, se passar, faz o login
+    if (validarFormulario()) {
+        $usuario = new usuario(email: $_POST["email"], senha: md5($_POST["senha"]));
+
+        $usuarioDAO = new usuarioDAO();
+        $ret = $usuarioDAO->login($usuario);
+
+        if (count($ret) == 1) {
+            $_SESSION["id"] = $ret[0]->id_usuario;
+            $_SESSION["nome"] = $ret[0]->nome;
+
+            header("location:../views/index.php");
+            exit();
+        } else {
+            $msg[2] = "Verifique seus dados";
+        }
+    }
+}
+?>
+
 <body class="dark-mode flex flex-col items-center">
     <header class="p-5 flex justify-center items-center w-screen">
         <div class="center-header max-w-[1300px] flex justify-between w-[80%]">
@@ -68,15 +115,16 @@
     <main class="p-5 space-y-8 flex flex-col items-center">
         <div class="login-box bg-[#1F1F1F] p-8 rounded-lg shadow-lg w-96 mt-[10%]">
             <h1 class="text-2xl text-white font-bold mb-4 text-center">Login</h1>
-            <form action="login.php" method="POST" class="p-6 rounded-lg">
+            <form action="#" method="POST" class="p-6 rounded-lg">
               <h2 class="text-white text-2xl mb-4">Faça Login</h2>
               <input
-                type="text"
-                name="username"
-                placeholder="Nome de Usuário"
+                type="email"
+                name="email"
+                placeholder="Email de Usuário"
                 required
                 class="mb-4 p-2 w-full rounded bg-[#414141] text-white"
               />
+              <?php echo "$msg[0];" ?>
               <input
                 type="password"
                 name="password"
@@ -84,12 +132,14 @@
                 required
                 class="mb-4 p-2 w-full rounded bg-[#414141] text-white"
               />
+              <?php echo "$msg[1];" ?>
               <button
                 type="submit"
                 class="bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] text-white py-2 px-4 rounded"
               >
                 Login
               </button>
+              <?php echo "$msg[2];" ?>
             </form>
             <p class="mt-4 text-white text-center">
               Não possui uma conta?
