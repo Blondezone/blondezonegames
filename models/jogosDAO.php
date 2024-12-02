@@ -34,5 +34,12 @@ class jogosDAO extends Conexao {
         }
     }
 
+    public function listarJogos() {
+        $sql = "SELECT * FROM jogos"; // Substitua 'jogos' pelo nome real da sua tabela
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }
 ?>

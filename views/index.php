@@ -1,3 +1,14 @@
+<?php
+require_once "../models/conexao.php";
+require_once "../models/jogosDAO.php";
+?>
+
+<?php
+$jogosDAO = new jogosDAO();
+$jogos = $jogosDAO->listarJogos(); 
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -81,6 +92,15 @@
                 <h3 class="text-xl font-semibold">Head Soccer</h3>
                 <p>Marque gols e se divirta ao máximo!</p>
             </a>
+            <section class="gap-10 flex flex-wrap justify-center max-w-[1400px]">
+                <?php foreach ($jogos as $jogo): ?>
+                    <a href="<?= htmlspecialchars($jogo['link']) ?>" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                        <img src="<?= htmlspecialchars($jogo['imagem']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" class="mb-3 rounded w-[300px] h-[300px]">
+                        <h3 class="text-xl font-semibold"><?= htmlspecialchars($jogo['titulo']) ?></h3>
+                        <p><?= htmlspecialchars($jogo['descricao']) ?></p>
+                    </a>
+                <?php endforeach; ?>
+            </section>
             <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
                 <img src="imagens/Minecraft_Vertical.webp" alt="Jogo 3" class="mb-3 rounded w-[300px] h-[300px]">
                 <h3 class="text-xl font-semibold">Minecraft</h3>
