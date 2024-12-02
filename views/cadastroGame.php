@@ -4,6 +4,7 @@ require_once "../models/conexao.php";
 require_once "../models/jogos.class.php";
 require_once "../models/jogosDAO.php";
 
+$erro = false;
 $msg = ["", "", ""];
 $empresasCadastradas = [];
 $imgpadrao = '../imagens/imgnull.webp';
@@ -103,6 +104,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             filter: blur(100px) opacity(40%);
         }
 
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
+
+        .modal-conteudo {
+            background-color: #111;
+            margin: 10% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; 
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .fechar {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fechar:hover,
+        .fechar:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .btn-cadastro {
+            background-color: #FF4E00;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            color: #111;
+        }
+
     </style>
     <link rel="shortcut icon" href="imagens/game-controller.svg" type="image/x-icon">
 </head>
@@ -122,13 +169,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="p-5 space-y-8 flex flex-col items-center">
         <section class="text-center">
             <span class="text-4xl font-extrabold bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] bg-clip-text text-transparent"> <span class="explore text-white font-normal">Cadastre seus</span> Jogos!</span>
-            <p class="mt-2">Clica no botão abaixo e cadastre seus melhores jogos no nosso site!</p>
+            <p class="mt-2">Clique no botão abaixo e cadastre seus melhores jogos no nosso site!</p>
         </section>
-        
     </main>
+
+    <button class="btn-cadastro" id="abrirModalBtn">Cadastrar jogo</button>
+
+
+        <div id="modal" class="modal">
+            <div class="modal-conteudo">
+                <span class="fechar" id="fecharModalBtn">&times;</span>
+                <h2>Cadastro de Jogo</h2>
+                <form action="cadastroGame.php" method="POST" enctype="multipart/form-data">
+                    <label for="text" id="label">Título:</label>
+                    <input type="text" name="titulo" placeholder="Nome do jogo" ><br>
+
+                    <label for="text" id="label">Link:</label>
+                    <input type="text" name="link" placeholder="Link para o jogo" ><br>
+
+                    <label for="text" id="label">Descrição:</label>
+                    <input type="text" name="descricao" placeholder="Breve descrição do jogo"><br>
+
+                    <label for="imagem" id="label">Imagem:</label>
+                    <input type="file" name="imagem" id="imagem"><br>
+
+                    <input type="hidden" name="id_adm" value="<?php echo $_SESSION['id']; ?>">
+                    <input type="hidden" name="id_jogo" value="<?php echo $id_jogo; ?>">
+
+                    <button class="btn-cadastro" type="submit">Confirmar cadastro</button>
+                </form>
+            </div>
+        </div>
+
     <footer class="p-5 text-center">
         <p>&copy; 2024 Blondezone. Todos os direitos reservados.</p>
     </footer>
     <script src="script.js"></script>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const abrirModalBtn = document.getElementById('abrirModalBtn'); 
+        const fecharModalBtn = document.getElementById('fecharModalBtn');
+
+        function abrirModal() {
+            modal.style.display = 'block';
+        }
+
+        function fecharModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                fecharModal();
+            }
+        };
+
+        // Adiciona os eventos
+        if (abrirModalBtn) abrirModalBtn.addEventListener('click', abrirModal);
+        if (fecharModalBtn) fecharModalBtn.addEventListener('click', fecharModal);
+    </script>
 </body>
 </html>
