@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <input
                 type="email"
                 name="email"
-                placeholder="Email de administrador"
+                placeholder="Email"
                 required
                 class="mb-4 p-2 w-full rounded bg-[#414141] text-white"
               />

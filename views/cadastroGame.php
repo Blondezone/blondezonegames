@@ -1,10 +1,64 @@
+<?php
+
+require_once "../models/conexao.php";
+require_once "../models/jogos.class.php";
+require_once "../models/jogosDAO.php";
+
+$msg = ["", "", ""];
+$empresasCadastradas = [];
+$imgpadrao = '../imagens/imgnull.webp';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Validação dos campos obrigatórios
+    if (empty($_POST["titulo"])) {
+        $msg[0] = "Preencha o título do jogo";
+        $erro = true;
+    }
+
+    if (empty($_POST["link"])) {
+        $msg[1] = "Preencha o link";
+        $erro = true;
+    }
+
+    if (empty($_POST["descricao"])) {
+        $msg[2] = "Preencha a descrição";
+        $erro = true;
+    }
+
+    // Upload da imagem
+    $imagem = $imgpadrao;
+    if (isset($_FILES["imagem"]) && $_FILES["imagem"]["tmp_name"]) {
+        $diretorio = "../imagens/";
+        $imagem = basename($_FILES["imagem"]["name"]);
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagem);
+    }
+
+    if (!$erro) {
+        // Criação do objeto jogos
+        $jogos = new Jogos(
+            titulo: $_POST["titulo"],
+            link: $_POST["link"],
+            descricao: $_POST["descricao"],
+            imagem: $imagem,
+            id_adm: $_POST["id_adm"],
+        );
+
+        $jogosDAO = new jogosDAO();
+        $jogosDAO->cadastrar($jogos); 
+        
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Blondezone</title>
+    <title>Blondezone - Jogos</title>
     <style>
         body {
             transition: background-color 0.5s, color 0.5s;
@@ -67,41 +121,10 @@
     </header>
     <main class="p-5 space-y-8 flex flex-col items-center">
         <section class="text-center">
-            <span class="text-4xl font-extrabold bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] bg-clip-text text-transparent"> <span class="explore text-white font-normal">Explore</span> Nossos Jogos!</span>
-            <p class="mt-2">Divirta-se jogando e descubra o seu novo favorito!</p>
+            <span class="text-4xl font-extrabold bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] bg-clip-text text-transparent"> <span class="explore text-white font-normal">Cadastre seus</span> Jogos!</span>
+            <p class="mt-2">Clica no botão abaixo e cadastre seus melhores jogos no nosso site!</p>
         </section>
-        <section class="gap-10 flex flex-wrap justify-center max-w-[1400px]">
-            <a href="https://www.clickjogos.com.br/jogos-de-acao/fireboy-and-watergirl-1-in-forest-temple#goog_rewarded" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/jogo-fogo-e-agua-1.jpeg" alt="Fogo e Água" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Fogo e Água</h3>
-                <p>Junte-se a Fogo e Água em suas aventuras!</p>
-            </a>
-            <a href="https://www.clickjogos.com.br/jogos-arcade/head-sports-football" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/head-soccer-2022_xl.jpg" alt="Head Soccer" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Head Soccer</h3>
-                <p>Marque gols e se divirta ao máximo!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/Minecraft_Vertical.webp" alt="Jogo 3" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Minecraft</h3>
-                <p>Divirta-se jogando Minecraft!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/hq720.jpg" alt="Jogo 4" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Street Fighter</h3>
-                <p>Teste suas habilidades com Street Fighter!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
-                <img src="imagens/apps.13132.14414709572348410.72095bc2-eee1-4d87-9f9b-bc01c18b3f78.jpg" alt="Jogo 5" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Jogo 5</h3>
-                <p>Vença os seus medos!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
-                <img src="imagens/artworks-000189369815-zcdnrs-t240x240.jpg" alt="Magrelinho Game" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Magrelinho Game</h3>
-                <p>Ressucite o Magrelinho!</p>
-            </a>
-        </section>
+        
     </main>
     <footer class="p-5 text-center">
         <p>&copy; 2024 Blondezone. Todos os direitos reservados.</p>

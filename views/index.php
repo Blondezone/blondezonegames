@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Blondezone - Login User</title>
+    <title>Blondezone - Jogos</title>
     <style>
         body {
             transition: background-color 0.5s, color 0.5s;
@@ -52,53 +52,6 @@
     </style>
     <link rel="shortcut icon" href="imagens/game-controller.svg" type="image/x-icon">
 </head>
-
-<?php
-session_start();
-$msg = ["", ""];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once "../models/Conexao.php";
-    require_once "../models/usuario.class.php";
-    require_once "../models/usuarioDAO.php";
-
-    //valida se os campos de entrada do formulário foram preenchidos
-    function validarFormulario() {
-        $erro = false;
-
-        if (empty($_POST["email"])) {
-            $msg[0] = "Preencha o email";
-            $erro = true;
-        }
-
-        if (empty($_POST["senha"])) {
-            $msg[1] = "Preencha a senha";
-            $erro = true;
-        }
-
-        return !$erro;
-    }
-
-    // Executa a validação e, se passar, faz o login
-    if (validarFormulario()) {
-        $usuario = new usuario(email: $_POST["email"], senha: md5($_POST["senha"]));
-
-        $usuarioDAO = new usuarioDAO();
-        $ret = $usuarioDAO->login($usuario);
-
-        if (count($ret) == 1) {
-            $_SESSION["id"] = $ret[0]->id_usuario;
-            $_SESSION["nome"] = $ret[0]->nome;
-
-            header("location:../views/index.php");
-            exit();
-        } else {
-            $msg[2] = "Verifique seus dados";
-        }
-    }
-}
-?>
-
 <body class="dark-mode flex flex-col items-center">
     <header class="p-5 flex justify-center items-center w-screen">
         <div class="center-header max-w-[1300px] flex justify-between w-[80%]">
@@ -113,45 +66,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
     <main class="p-5 space-y-8 flex flex-col items-center">
-        <div class="login-box bg-[#1F1F1F] p-8 rounded-lg shadow-lg w-96 mt-[10%]">
-            <h1 class="text-2xl text-white font-bold mb-4 text-center">Login</h1>
-            <form action="#" method="POST" class="p-6 rounded-lg">
-              <h2 class="text-white text-2xl mb-4">Faça Login</h2>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email de Usuário"
-                required
-                class="mb-4 p-2 w-full rounded bg-[#414141] text-white"
-              />
-              <?php echo "$msg[0];" ?>
-              <input
-                type="password"
-                name="password"
-                placeholder="Senha"
-                required
-                class="mb-4 p-2 w-full rounded bg-[#414141] text-white"
-              />
-              <?php echo "$msg[1];" ?>
-              <button
-                type="submit"
-                class="bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] text-white py-2 px-4 rounded"
-              >
-                Login
-              </button>
-              <?php echo "$msg[2];" ?>
-            </form>
-            <p class="mt-4 text-white text-center">
-              Não possui uma conta?
-              <a href="register.php" class="text-[#FF2E00] hover:underline"
-                >Registrar</a
-              >
-            </p>
-          </div>
+        <section class="text-center">
+            <span class="text-4xl font-extrabold bg-gradient-to-r from-[#FF2E00] to-[#FF5C00] bg-clip-text text-transparent"> <span class="explore text-white font-normal">Explore</span> Nossos Jogos!</span>
+            <p class="mt-2">Divirta-se jogando e descubra o seu novo favorito!</p>
+        </section>
+        <section class="gap-10 flex flex-wrap justify-center max-w-[1400px]">
+            <a href="https://www.clickjogos.com.br/jogos-de-acao/fireboy-and-watergirl-1-in-forest-temple#goog_rewarded" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                <img src="imagens/jogo-fogo-e-agua-1.jpeg" alt="Fogo e Água" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Fogo e Água</h3>
+                <p>Junte-se a Fogo e Água em suas aventuras!</p>
+            </a>
+            <a href="https://www.clickjogos.com.br/jogos-arcade/head-sports-football" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                <img src="imagens/head-soccer-2022_xl.jpg" alt="Head Soccer" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Head Soccer</h3>
+                <p>Marque gols e se divirta ao máximo!</p>
+            </a>
+            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                <img src="imagens/Minecraft_Vertical.webp" alt="Jogo 3" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Minecraft</h3>
+                <p>Divirta-se jogando Minecraft!</p>
+            </a>
+            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                <img src="imagens/hq720.jpg" alt="Jogo 4" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Street Fighter</h3>
+                <p>Teste suas habilidades com Street Fighter!</p>
+            </a>
+            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
+                <img src="imagens/apps.13132.14414709572348410.72095bc2-eee1-4d87-9f9b-bc01c18b3f78.jpg" alt="Jogo 5" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Jogo 5</h3>
+                <p>Vença os seus medos!</p>
+            </a>
+            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
+                <img src="imagens/artworks-000189369815-zcdnrs-t240x240.jpg" alt="Magrelinho Game" class="mb-3 rounded w-[300px] h-[300px]">
+                <h3 class="text-xl font-semibold">Magrelinho Game</h3>
+                <p>Ressucite o Magrelinho!</p>
+            </a>
+        </section>
     </main>
-    <footer class="p-5 text-center absolute bottom-0">
+    <footer class="p-5 text-center">
         <p>&copy; 2024 Blondezone. Todos os direitos reservados.</p>
     </footer>
-    <script src="script-login.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
