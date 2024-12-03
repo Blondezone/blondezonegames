@@ -69,6 +69,10 @@ $jogos = $jogosDAO->listarJogos();
     </style>
     <link rel="shortcut icon" href="imagens/game-controller.svg" type="image/x-icon">
 </head>
+        <button style="margin: 20px ;" onclick="toggle()" class="p-2 text-white rounded-[13px] hover:bg-zinc-900 transition w-[50px] h-[50px]">
+                <img class="icon-mode" src="../imagens/sun.svg" alt="">
+                <img class="moon hidden" src="../imagens/moon.svg" alt="">
+        </button>
 <body class="dark-mode flex flex-col items-center">
     <main class="p-5 space-y-8 flex flex-col items-center">
         <section class="text-center">
@@ -88,6 +92,6 @@ $jogos = $jogosDAO->listarJogos();
     <footer class="p-5 text-center">
         <p>&copy; 2024 Blondezone. Todos os direitos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

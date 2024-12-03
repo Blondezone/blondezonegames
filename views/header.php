@@ -35,4 +35,6 @@ if (!isset($_SESSION)) {
         ?>
     </header>
 
+    <script src="../js/script.js"></script>
+
 </html>
