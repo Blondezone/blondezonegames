@@ -8,9 +8,9 @@
 
 ## Visão Geral
 
-Este repositório contém o código da plataforma de hospedagem de jogos **Blondezone**, que permite que desenvolvedores e jogadores compartilhem e joguem jogos online. A plataforma foi desenvolvida utilizando **HTML**, **CSS (TailwindCSS)** e **JavaScript** no front-end, com backend em **Node.js** e banco de dados **MongoDB** para oferecer uma experiência robusta e segura.
+Este repositório contém o código da plataforma de hospedagem de jogos **Blondezone**, que permite que desenvolvedores e jogadores compartilhem e joguem jogos online. A plataforma foi desenvolvida utilizando **HTML**, **CSS (TailwindCSS)** e **JavaScript** no front-end, com backend em **PHP** e banco de dados **MySQL** para oferecer uma experiência robusta e segura.
 
-> **Nota**: O projeto possui três ramos: `Main`, `Front-End` e `Back-End`. O desenvolvimento do front-end do site está no ramo `Front-End`, enquanto o ramo `Admin` está reservado para funcionalidades futuras.
+> **Nota**: O projeto possui três ramos: `Main`, `Front-End` e `Back-End`. O desenvolvimento do front-end do site está no ramo `Front-End`.
 
 ---
 
@@ -21,7 +21,6 @@ Este repositório contém o código da plataforma de hospedagem de jogos **Blond
 ├── 📂 Main (Ramo Principal)
 ├── 📂 Front-End (Código do site)
 │   ├── index.html
-│   ├── 404.html
 │   ├── /css
 │   └── /js
 ├── 📂 Admin (Administrador)
@@ -32,7 +31,7 @@ Este repositório contém o código da plataforma de hospedagem de jogos **Blond
 
 - **Main**: Ramo principal, onde o código consolidado é mantido.
 - **Front-End**: Contém o site completo, incluindo páginas HTML, CSS e JavaScript.
-- **Admin**: Ramo reservado para futuras funcionalidades administrativas.
+- **Back-End**: Inclui dados em PHP e MySQL.
 
 ---
 
@@ -54,11 +53,9 @@ cd blondezone
 ## Tecnologias Utilizadas
 
 - **HTML5**: Estrutura das páginas.
-- **CSS3 com TailwindCSS**: Framework CSS utilizado para estilizar e tornar o site responsivo.
+- **CSS3**: Estilização das páginas.
 - **JavaScript**: Interatividade, incluindo animações.
-- **Storyset**: Imagens SVG usadas para ilustrações no site.
-- **MongoDB**: Armazenamento de dados de usuários e jogos.
-- **Node.js e Express**: Backend da plataforma.
+- **MySQL Workbench**: Armazenamento de dados de usuários e jogos.
 - **GitHub Pages**: Hospedagem do site.
 
 ---
@@ -67,10 +64,7 @@ cd blondezone
 
 - 🚀 **Hospedagem de Jogos**: Carregue e compartilhe seus jogos com a comunidade.
 - 🎮 **Interface Amigável**: Fácil navegação e acessibilidade para todos os usuários.
-- 📱 **Responsividade**: Compatível com dispositivos móveis e desktop.
 - 🌐 **Suporte Multiplataforma**: Hospedagem de jogos de diferentes plataformas.
-- 🗣️ **Comunidade**: Fórum e comentários para interação entre desenvolvedores e jogadores.
-- ⭐ **Sistema de Avaliação**: Feedback dos usuários em cada jogo.
 
 ---
 
