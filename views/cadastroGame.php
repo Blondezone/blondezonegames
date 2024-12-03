@@ -173,6 +173,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img class="moon hidden" src="imagens/moon.svg" alt="">
             </button>
         </div>
+
+        <?php 
+
+            if (isset($_SESSION["id"])) {
+                $id_usuario = $_SESSION["id"];
+                $nome = htmlspecialchars($_SESSION["nome"]);
+
+                echo "Bem-vindo, $nome";
+            } else {
+                echo "<a href='../views/loginAdm.php'>Login</a>";
+                echo "<a href='../views/cadastro.php' class='btn-cadastrar'>Cadastrar-se</a>";
+            }
+
+        ?>
     </header>
     <main class="p-5 space-y-8 flex flex-col items-center">
         <section class="text-center">
