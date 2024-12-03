@@ -17,12 +17,15 @@ class jogosDAO extends Conexao {
     
         try {
             // Cadastro da jogos
-            $sql = "INSERT INTO jogos (titulo, link, descricao, id_adm) VALUES (?, ?, ?, ?)";
+            //$imagemConteudo = file_get_contents($jogos->getImagem()); // Lê o conteúdo da imagem
+
+            $sql = "INSERT INTO jogos (titulo, link, descricao, imagem, id_adm) VALUES (?, ?, ?, ?, ?)";
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $jogos->getTitulo());
             $stm->bindValue(2, $jogos->getLink());
             $stm->bindValue(3, $jogos->getDescricao());
-            $stm->bindValue(4, $jogos->getId_adm());
+            $stm->bindValue(4, $jogos->getImagem()); // Insere o conteúdo da imagem
+            $stm->bindValue(5, $jogos->getId_adm());
             $stm->execute();
     
             $this->db->commit(); // Confirma a transação
@@ -36,7 +39,7 @@ class jogosDAO extends Conexao {
 
     public function listarJogos() {
         $sql = "SELECT * FROM jogos"; // Substitua 'jogos' pelo nome real da sua tabela
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

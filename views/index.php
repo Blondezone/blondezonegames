@@ -82,45 +82,13 @@ $jogos = $jogosDAO->listarJogos();
             <p class="mt-2">Divirta-se jogando e descubra o seu novo favorito!</p>
         </section>
         <section class="gap-10 flex flex-wrap justify-center max-w-[1400px]">
-            <a href="https://www.clickjogos.com.br/jogos-de-acao/fireboy-and-watergirl-1-in-forest-temple#goog_rewarded" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/jogo-fogo-e-agua-1.jpeg" alt="Fogo e Água" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Fogo e Água</h3>
-                <p>Junte-se a Fogo e Água em suas aventuras!</p>
-            </a>
-            <a href="https://www.clickjogos.com.br/jogos-arcade/head-sports-football" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/head-soccer-2022_xl.jpg" alt="Head Soccer" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Head Soccer</h3>
-                <p>Marque gols e se divirta ao máximo!</p>
-            </a>
-            <section class="gap-10 flex flex-wrap justify-center max-w-[1400px]">
-                <?php foreach ($jogos as $jogo): ?>
-                    <a href="<?= htmlspecialchars($jogo['link']) ?>" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                        <img src="<?= htmlspecialchars($jogo['imagem']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" class="mb-3 rounded w-[300px] h-[300px]">
-                        <h3 class="text-xl font-semibold"><?= htmlspecialchars($jogo['titulo']) ?></h3>
-                        <p><?= htmlspecialchars($jogo['descricao']) ?></p>
-                    </a>
-                <?php endforeach; ?>
-            </section>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/Minecraft_Vertical.webp" alt="Jogo 3" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Minecraft</h3>
-                <p>Divirta-se jogando Minecraft!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
-                <img src="imagens/hq720.jpg" alt="Jogo 4" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Street Fighter</h3>
-                <p>Teste suas habilidades com Street Fighter!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
-                <img src="imagens/apps.13132.14414709572348410.72095bc2-eee1-4d87-9f9b-bc01c18b3f78.jpg" alt="Jogo 5" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Jogo 5</h3>
-                <p>Vença os seus medos!</p>
-            </a>
-            <a href="#" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform">
-                <img src="imagens/artworks-000189369815-zcdnrs-t240x240.jpg" alt="Magrelinho Game" class="mb-3 rounded w-[300px] h-[300px]">
-                <h3 class="text-xl font-semibold">Magrelinho Game</h3>
-                <p>Ressucite o Magrelinho!</p>
-            </a>
+            <?php foreach ($jogos as $jogo): ?>
+                <a href="<?= htmlspecialchars($jogo['link']) ?>" class="game-card p-5 rounded-lg shadow-lg hover:scale-105 transition transform w-fit">
+                <img src="../imagens/<?php echo htmlspecialchars($jogos['imagem']); ?>"    
+                <h3 class="text-xl font-semibold"><?= htmlspecialchars($jogo['titulo']) ?></h3>
+                    <p><?= htmlspecialchars($jogo['descricao']) ?></p>
+                </a>
+            <?php endforeach; ?>
         </section>
     </main>
     <footer class="p-5 text-center">

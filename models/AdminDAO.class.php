@@ -6,6 +6,10 @@ class adminDAO extends Conexao
         parent::__construct();
     }
 
+    public function getLastInsertedId() {
+        return $this->db->lastInsertId();
+    }    
+
     public function cadastrar(Admin $admin)
     {
         $sql = "INSERT INTO admins (adm, email, senha) VALUES (?, ?, ?)";

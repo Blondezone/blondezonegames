@@ -4,6 +4,12 @@ require_once "../models/conexao.php";
 require_once "../models/jogos.class.php";
 require_once "../models/jogosDAO.php";
 
+// Verifica se o usuário está logado
+session_start();
+if (!isset($_SESSION['id'])) {
+    die("Você precisa estar logado para cadastrar um jogo.");
+}
+
 $erro = false;
 $msg = ["", "", ""];
 $empresasCadastradas = [];
@@ -30,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Upload da imagem
     $imagem = $imgpadrao;
     if (isset($_FILES["imagem"]) && $_FILES["imagem"]["tmp_name"]) {
-        $diretorio = "../imagens/";
+        $diretorio = "../imagens/   ";
         $imagem = basename($_FILES["imagem"]["name"]);
         move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagem);
     }
@@ -42,16 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             link: $_POST["link"],
             descricao: $_POST["descricao"],
             imagem: $imagem,
-            id_adm: $_POST["id_adm"],
+            id_adm: $_SESSION['id'],  // Usando o ID do administrador da sessão
         );
 
         $jogosDAO = new jogosDAO();
         $jogosDAO->cadastrar($jogos); 
         
+        var_dump($jogos);
     }
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
