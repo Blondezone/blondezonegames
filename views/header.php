@@ -24,7 +24,7 @@ if (!isset($_SESSION)) {
 
             if (isset($_SESSION["id"])) {
                 $id_usuario = $_SESSION["id"];
-                $nome = htmlspecialchars($_SESSION["adm"]);
+                $nome = isset($_SESSION["adm"]) ? htmlspecialchars($_SESSION["adm"]) : "Usuário";
 
                 echo "<a href='../models/logout.php'>Bem-vindo, $nome</a>";
             } else {
