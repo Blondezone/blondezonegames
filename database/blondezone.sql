@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admins` (
-  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `id_adm` int(11) NOT NULL AUTO_INCREMENT,
   `adm` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_admin`),
+  PRIMARY KEY (`id_adm`),
   UNIQUE KEY `adm` (`adm`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -55,10 +55,10 @@ CREATE TABLE `jogos` (
   `link` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   `imagem` blob NOT NULL,
-  `id_admin` int(11) DEFAULT NULL,
+  `id_adm` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_jogo`),
-  KEY `id_admin` (`id_admin`),
-  CONSTRAINT `jogos_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admins` (`id_admin`)
+  KEY `id_adm` (`id_adm`),
+  CONSTRAINT `jogos_ibfk_1` FOREIGN KEY (`id_adm`) REFERENCES `admins` (`id_adm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
