@@ -22,6 +22,11 @@ $jogos = $jogosDAO->listarJogos();
             transition: background-color 0.5s, color 0.5s;
         }
 
+        img {
+            width: 200px;
+            height: auto;
+        }
+
         .light-mode{
             background-color: #f3f4f6;
             color: #111827;

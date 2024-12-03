@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             <p class="mt-4 text-white text-center">
               Não possui uma conta?
-              <a href="#" class="text-[#FF2E00] hover:underline"
+              <a href="cadastro.php" class="text-[#FF2E00] hover:underline"
                 >Registrar</a
               >
             </p>

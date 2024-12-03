@@ -131,6 +131,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     Cadastrar
                 </button>
             </form>
+            <p class="mt-4 text-white text-center">
+              Possui uma conta?
+              <a href="cadastro.php" class="text-[#FF2E00] hover:underline"
+                >Fazer login</a
+              >
+            </p>
         </div>
     </main>
 

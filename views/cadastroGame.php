@@ -80,6 +80,7 @@ $jogos = $jogosDAO->listarJogos();
         }
         .game-card {
             background-color: #141414; 
+            margin-top: 25px;
         }
 
         header{
@@ -152,8 +153,20 @@ $jogos = $jogosDAO->listarJogos();
         }
 
         input {
-            color: #111;
+            margin: 6px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
         }
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+
+
+
 
     </style>
     <link rel="shortcut icon" href="imagens/game-controller.svg" type="image/x-icon">
