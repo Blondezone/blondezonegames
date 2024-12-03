@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_adm = $adminDAO->getLastInsertedId();  // Você precisa garantir que este método esteja implementado para pegar o ID do admin inserido
             
             $_SESSION['id'] = $id_adm;
-            $_SESSION['adm'] = $nome;
+            $_SESSION['adm'] = $adm;
 
             echo "Administrador cadastrado com sucesso!";
             
